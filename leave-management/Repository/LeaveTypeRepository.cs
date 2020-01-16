@@ -18,17 +18,20 @@ namespace leave_management.Repository
 
         public bool Create(LeaveType entity)
         {
-            throw new NotImplementedException();
+            _db.LeaveTypes.Add(entity);
+            return Save();
         }
 
         public bool Delete(LeaveType entity)
         {
-            throw new NotImplementedException();
+            _db.LeaveTypes.Remove(entity);
+            return Save();
         }
 
         public ICollection<LeaveType> FindAll()
         {
-            throw new NotImplementedException();
+            var leavetypes = _db.LeaveTypes.ToList();
+            return leavetypes;
         }
 
         public LeaveType FindById(int id)
