@@ -30,7 +30,6 @@ namespace leave_management
                 }
             }
         }
-
         private static void SeedRoles(RoleManager<IdentityRole> roleManager)
         {
             if (!roleManager.RoleExistsAsync("Administrator").Result)
