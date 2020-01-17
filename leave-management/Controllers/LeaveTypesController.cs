@@ -67,7 +67,7 @@ namespace leave_management.Controllers
             }
             catch
             {
-                return View();
+                return View(model);
             }
         }
 
