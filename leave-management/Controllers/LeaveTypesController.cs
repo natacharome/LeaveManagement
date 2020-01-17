@@ -33,7 +33,13 @@ namespace leave_management.Controllers
         // GET: LeaveTypes/Details/5
         public ActionResult Details(int id)
         {
-            return View();
+            if (_repo.isExists(id))
+            {
+                return NotFound();
+            }
+            var leavetype = _repo.FindById(id);
+            var model = _mapper.Map<LeaveTypeViewModel>(leavetype);
+            return View(model);
         }
 
         // GET: LeaveTypes/Create
@@ -106,25 +112,39 @@ namespace leave_management.Controllers
             }
             catch
             {
-                return View(model);
+                return View();
             }
         }
 
         // GET: LeaveTypes/Delete/5
         public ActionResult Delete(int id)
         {
-            return View();
+            if (!_repo.isExists(id))
+            {
+                return NotFound();
+            }
+            var leaveType = _repo.FindById(id);
+            var model = _mapper.Map<LeaveTypeViewModel>(leaveType);
+            return View(model);
         }
 
         // POST: LeaveTypes/Delete/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Delete(int id, IFormCollection collection)
+        public ActionResult Delete(int id, LeaveTypeViewModel model)
         {
             try
             {
-                // TODO: Add delete logic here
-
+                var leaveType = _repo.FindById(id);
+                if(leaveType == null)
+                {
+                    return NotFound();
+                }
+                var isSuccess = _repo.Delete(leaveType);
+                if (!isSuccess)
+                {
+                    return View(model);
+                }
                 return RedirectToAction(nameof(Index));
             }
             catch
