@@ -119,13 +119,20 @@ namespace leave_management.Controllers
         // GET: LeaveTypes/Delete/5
         public ActionResult Delete(int id)
         {
-            if (!_repo.isExists(id))
+
+            // Make a pop up button instead of changing page - changing it in the view
+
+            var leaveType = _repo.FindById(id);
+            if (leaveType == null)
             {
                 return NotFound();
             }
-            var leaveType = _repo.FindById(id);
-            var model = _mapper.Map<LeaveTypeViewModel>(leaveType);
-            return View(model);
+            var isSuccess = _repo.Delete(leaveType);
+            if (!isSuccess)
+            {
+                return BadRequest();
+            }
+            return RedirectToAction(nameof(Index));
         }
 
         // POST: LeaveTypes/Delete/5
