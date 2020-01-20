@@ -10,7 +10,7 @@ namespace leave_management.Models
 {
     public class LeaveAllocationViewModel
     {
-       
+
 
         public int Id { get; set; }
         public int NumberOfDays { get; set; }
@@ -20,15 +20,28 @@ namespace leave_management.Models
         public string EmployeeId { get; set; }
         public LeaveTypeViewModel LeaveType { get; set; }
         public int LeaveTypeId { get; set; }
-        public IEnumerable<SelectListItem> Employees { get; set; }
-        public IEnumerable<SelectListItem> LeaveTypes { get; set; }
 
-       
     }
 
     public class CreateLeaveAllocationVM
     {
         public int NumberUpdated { get; set; }
         public List<LeaveTypeViewModel> LeaveTypes { get; set; }
+    }
+
+    public class ViewAllocationsVM
+    {
+        public EmployeeViewModel Employee { get; set; }
+        public string EmployeeId { get; set; }
+        public List<LeaveAllocationViewModel> LeaveAllocations { get; set; }
+    }
+
+    public class EditLeaveAllocationVM
+    {
+        public int Id { get; set; }
+        public int NumberOfDays { get; set; }
+        public EmployeeViewModel Employee { get; set; }
+        public LeaveTypeViewModel LeaveType { get; set; }
+       
     }
 }
