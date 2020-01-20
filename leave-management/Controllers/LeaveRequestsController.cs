@@ -59,8 +59,7 @@ namespace leave_management.Controllers
 
         public ActionResult ApproveRequest(int id)
         {
-            try
-            {
+           
                 var user = _userManager.GetUserAsync(User).Result;
                 var leaveRequest = _leaveRequestRepo.FindById(id);
                 leaveRequest.Approved = true;
@@ -68,18 +67,12 @@ namespace leave_management.Controllers
                 leaveRequest.DateActioned = DateTime.Now;
                 var isSuccess = _leaveRequestRepo.Update(leaveRequest);
                 return RedirectToAction(nameof(Index), "Home");
-            }
-            catch(Exception ex)
-            {
-                return RedirectToAction(nameof(Index), "Home");
-            }
+            
            
         }
 
         public ActionResult RejectRequest(int id)
         {
-            try
-            {
                 var user = _userManager.GetUserAsync(User).Result;
                 var leaveRequest = _leaveRequestRepo.FindById(id);
                 leaveRequest.Approved = false;
@@ -87,11 +80,7 @@ namespace leave_management.Controllers
                 leaveRequest.DateActioned = DateTime.Now;
                 var isSuccess = _leaveRequestRepo.Update(leaveRequest);
                 return RedirectToAction(nameof(Index), "Home");
-            }
-            catch (Exception ex)
-            {
-                return RedirectToAction(nameof(Index), "Home");
-            }
+            
         }
 
 

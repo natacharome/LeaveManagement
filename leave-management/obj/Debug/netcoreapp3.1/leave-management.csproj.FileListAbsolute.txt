@@ -218,3 +218,4 @@ C:\Users\Natacha\source\repos\leave-management\leave-management\obj\Debug\netcor
 C:\Users\Natacha\source\repos\leave-management\leave-management\obj\Debug\netcoreapp3.1\Razor\Views\LeaveRequests\Index.cshtml.g.cs
 C:\Users\Natacha\source\repos\leave-management\leave-management\obj\Debug\netcoreapp3.1\Razor\Views\LeaveRequests\Create.cshtml.g.cs
 C:\Users\Natacha\source\repos\leave-management\leave-management\obj\Debug\netcoreapp3.1\Razor\Views\LeaveRequests\Details.cshtml.g.cs
+C:\Users\Natacha\source\repos\leave-management\leave-management\obj\Debug\netcoreapp3.1\Razor\Views\Shared\_AdminLTE.cshtml.g.cs
